@@ -1,0 +1,116 @@
+깃헙 계정 
+aromycoderecipe
+aromycoderecipe@gmail.com
+a9960909
+
+강사 - 백명숙 
+https://blog.naver.com/vega2k
+
+// 참조 사이트 
+https://github.com/django/django
+
+작업 환경 구축하기 
+- 작업 폴더 생성 django_src
+- 아나콘다 3.6.4
+- 파이참 
+
+//장고 모듈 설치 - 터미널 모드 
+pip install "django<2.0"
+2.0 보다 하위 버전이어야 함 
+>>> pip show django
+
+C:\Users\kosta>pip show django
+Name: Django
+Version: 1.11.13
+
+설치 위치 >>
+C:\Anaconda3\Lib\site-packages\Django-2.0.5.dist-info
+
+
+C:\Users\kosta>django-admin --version
+1.11.13
+
+// 용어 정리 
+- MVC
+- MTV
+
+//참고 
+https://cli.angular.io/
+
+
+// 프로젝트 만들기 - 파이참 터미널 모드 
+C:\django_src>django-admin startproject mysite
+
+//어드민 설정하기 
+
+admin
+pythondjango
+
+//어드민 페이지로 접속하기 
+http://127.0.0.1:8000/admin/
+
+//
+ORM 매핑 Rule
+
+Class <=> Table
+Object <=> Row
+(Instance)
+Variable <=> Column
+(property)
+
+//Java와 Python 비교 
+Java
+toString()
+Post post = new Post
+println(post.toString()) //Object
+
+Python
+__str__()
+
+
+
+//블로그앱 만들기 
+C:\django_src\mysite>python manage.py startapp blog
+
+
+//파이참에서 임포트하기 
+[Alt]+[Enter]
+
+//블로그 admin 페이지 수정하기 
+교재 33페이지 이후 
+
+#admin.py
+from django.contrib import admin
+from .models import Post
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ['id','title']
+    list_display_links = ['title']
+
+admin.site.register(Post,PostAdmin)
+
+--------------------------------------------
+#mysite/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'', include('blog.urls')),
+
+]
+
+#blog/urls.py
+from django.conf.urls import url
+
+from blog import views
+
+urlpatterns = [
+    url(r'^$', views.post_list,name='post_list'),
+]
+
+--------------------------------------------
+파이참에서 깃 설치하기 
+
+[VCS]-[Enable Version ~] 
+깃이 없다면 Download
