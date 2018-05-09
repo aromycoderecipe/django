@@ -1,3 +1,5 @@
+from django.conf.urls import url
+
 """mysite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,9 +17,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
+    # url(r'^accounts/login/$',auth_views.login, )
+    url(r'^accounts/login/$', auth_views.login, name='login'),
 
 ]

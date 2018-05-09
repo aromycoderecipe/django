@@ -5,6 +5,7 @@ a9960909
 
 강사 - 백명숙 
 https://blog.naver.com/vega2k
+https://github.com/vega2k
 
 // 참조 사이트 
 https://github.com/django/django
@@ -39,7 +40,7 @@ https://cli.angular.io/
 
 
 // 프로젝트 만들기 - 파이참 터미널 모드 
-C:\django_src>django-admin startproject mysite
+C:\django_src>django-admin startproject mysite .
 
 //어드민 설정하기 
 
@@ -114,3 +115,74 @@ urlpatterns = [
 
 [VCS]-[Enable Version ~] 
 깃이 없다면 Download
+
+--------------------------------------------
+1) 깃에 로그하기 
+ Repository 생성 
+주소 복사 
+https://github.com/aromycoderecipe/django.git
+
+2) 파이참에서 깃 연결 확인 후 프로젝트 창에서 
+프로젝트 디렉토리 마우스 우측 버튼 깃 
+
+
+
+
+>>>python manage.py shell
+
+비번 
+postgress
+
+>>>
+mysite
+django(계정)
+djangoadmin(패스워드)
+
+1) 계정 만들기
+2) 데이타베이스 만들기 
+3) 테이블 만들기 - Schemas
+- psycopg2 설치 
+C:\django_src>pip install psycopg2
+
+- 내용 추가 
+'default': {
+'ENGINE': 'django.db.backends.postgresql_psycopg2',
+'NAME': 'mysite',
+'USER':'python',
+'PASSWORD':'pythonadmin',
+'HOST':'localhost',
+'PORT':'5432',
+}
+
+
+// migrate
+C:\django_src>python manage.py migrate
+
+명령 실행 후 postgresSQL 페이지에서 
+테이블 확인 blog_post
+
+
+//super user 생성하기 
+id:admin
+pwd:djangoadmin
+
+>>>python manage.py createsuperuser
+
+//서버 구동하기 
+python manage.py runserver
+
+//서버 관리자 페이지에서 
+새로 추가된 super user 관리자로 다시 로그인하기 
+관리자 페이지에서 블로그 2개 추가 
+
+//추가된 블로그 확인하기 
+
+python manage.py showmigrations blog
+python manage.py sqlmigrate blog
+
+//test 필드 새로 추가하기 
+
+
+// 장고 강좌 
+https://programmers.co.kr/learn/courses/6
+https://appear.github.io/2017/11/30/DjangoG/djangog-03/
